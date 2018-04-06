@@ -1,5 +1,8 @@
 <?php
-ini_set('display_errors', true);
+
+$_ENV['DEBUG'] = true;
+
+ini_set('display_errors', $_ENV['DEBUG']);
 function dd($data) {
     echo "<pre>";
     var_dump($data);
@@ -8,16 +11,21 @@ function dd($data) {
 
 require __DIR__.'/bootstrap/autolad.php';
 
-use Routing\Router;
+use Kernel\Kernel;
 
-$rotas = new Router();
+$kernel = new Kernel();
 
-$rotas->on('GET', '/teste/{to}/action/{to2}', function($to, $to2){
-    echo 'estou aqui'. $to.'   '. $to2;
-})
-->on('GET','/',function(){
-    echo "olá";
-});
+$kernel->start();
+// use Routing\Router;
+
+// $rotas = new Router();
+
+// $rotas->on('GET', '/teste/{to}/action/{to2}', function($to, $to2) {
+//     echo  'estou aqui'. $to.'   '. $to2;
+// })
+// ->on('GET','/', function() {
+//     echo "olá";
+// });
 // ->on('POST', '/dd', function(){
 //     echo "roda 2";
 // })
@@ -26,7 +34,7 @@ $rotas->on('GET', '/teste/{to}/action/{to2}', function($to, $to2){
 // });
 
 // dd($server->request_method);
-$rotas->run();
+ // $rotas->run();
 //$server->request_method, $server->request_uri
 // dd($rotas->getListRoutes());
 // dd($server);

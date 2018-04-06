@@ -2,7 +2,7 @@
 /**
 *
 */
-namespace Server;
+namespace Kernel\Server;
 
 class Server
 {

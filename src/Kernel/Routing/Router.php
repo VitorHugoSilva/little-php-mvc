@@ -2,9 +2,9 @@
 /**
 *
 */
-namespace Routing;
+namespace Kernel\Routing;
 
-use Server\Server;
+use Kernel\Server\Server;
 
 class Router
 {
@@ -90,7 +90,6 @@ class Router
     {
         $server = is_null($server) ? $this->server : $server;
         $uri = $this->checkUriFromServer($server);
-
         foreach ($this->routes[$server->request_method] as $route) {
             if(preg_match($route[0], $uri, $parameters)) {
                 array_shift($parameters);
